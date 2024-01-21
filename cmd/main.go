@@ -10,6 +10,7 @@ func main() {
 	app := echo.New()
 
 	landingHandler := handler.LandingHandler{}
+	app.Static("/public", "public")
 	app.GET("/", landingHandler.HandleLanding)
 	app.Start(":3000")
 }
