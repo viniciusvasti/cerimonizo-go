@@ -1,5 +1,9 @@
 package landing
 
+import "viniciusvasti/cerimonize/view/layout"
+
 templ Show() {
-    <h1>Hello from landing page</h1>
+	@layout.Base() {
+		<h1>Hello from landing page</h1>
+	}
 }

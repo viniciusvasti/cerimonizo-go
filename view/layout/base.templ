@@ -1,0 +1,24 @@
+package layout
+
+templ Base() {
+	<html>
+		<head></head>
+		<body>
+			@header()
+			{ children... }
+			@footer()
+		</body>
+	</html>
+}
+
+templ header() {
+	<header>
+		This is from base layout
+	</header>
+}
+
+templ footer() {
+	<footer>
+		by VAS
+	</footer>
+}
