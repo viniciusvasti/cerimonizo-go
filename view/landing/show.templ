@@ -1,9 +1,11 @@
 package landing
 
 import "viniciusvasti/cerimonize/view/layout"
+import "viniciusvasti/cerimonize/view/components"
 
 templ Show() {
 	@layout.Base() {
 		<h1>Hello from landing page</h1>
+		@components.Input(components.InputProps{Type: "email", Name: "email"})
 	}
 }

@@ -11,6 +11,7 @@ import "io"
 import "bytes"
 
 import "viniciusvasti/cerimonize/view/layout"
+import "viniciusvasti/cerimonize/view/components"
 
 func Show() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
@@ -32,6 +33,10 @@ func Show() templ.Component {
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Hello from landing page</h1>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.Input(components.InputProps{Type: "email", Name: "email"}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
