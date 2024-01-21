@@ -10,5 +10,5 @@ type LandingHandler struct {
 }
 
 func (lh LandingHandler) HandleLanding(c echo.Context) error {
-	return landing.Show().Render(c.Request().Context(), c.Response())
+	return render(c, landing.Show())
 }
