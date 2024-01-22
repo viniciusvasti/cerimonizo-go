@@ -33,7 +33,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main class=\"flex-1 flex w-full justify-center items-center flex-col px-6 pb-2 sm:px14\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main class=\"flex-1 flex w-full items-center flex-col px-6 pb-2 sm:px14\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
