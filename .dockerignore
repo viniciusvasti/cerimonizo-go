@@ -1,0 +1,12 @@
+bin
+node_modules
+.git
+.gitignore
+.air.toml
+Makefile
+package-lock.json
+package.json
+tailwind.config.js
+tailwind.css
+view/**/*.templ
+.env
