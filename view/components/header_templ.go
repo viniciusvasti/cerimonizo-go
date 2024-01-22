@@ -23,7 +23,7 @@ func Header() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"flex flex-row justify-between items-center bg-gray-50 fixed z-50 h-32 sm:h-16 w-full px-6 sm:px-12 shadow-md\"><span class=\"text-purple-500 uppercase text-2xl font-semibold font-mono\">Cerimonizo</span></nav>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"flex flex-row justify-between items-center bg-gray-50 fixed z-50 h-64 sm:h-16 w-full px-6 sm:px-12 shadow-md\"><span class=\"text-purple-500 uppercase text-2xl font-semibold font-mono\">Cerimonizo</span></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
