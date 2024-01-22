@@ -1,26 +1,19 @@
 package layout
 
+import "viniciusvasti/cerimonize/view/components"
+
 templ Base() {
 	<html>
 		<head>
 			<link rel="stylesheet" href="public/styles.css"/>
 		</head>
-		<body>
-			@header()
-			{ children... }
-			@footer()
+		<body class="flex flex-col items-center relative bg-gray-200 min-h-[100dvh]">
+			@components.Header()
+			<main class="flex-1 flex w-full justify-center items-center flex-col px-6 pb-2 sm:px14">
+				{ children... }
+			</main>
+			<hr class="w-[90%] border-gray-300"/>
+			@components.Footer()
 		</body>
 	</html>
-}
-
-templ header() {
-	<header>
-		This is from the base layout
-	</header>
-}
-
-templ footer() {
-	<footer class="">
-		by VAS
-	</footer>
 }
