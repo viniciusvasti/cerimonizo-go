@@ -32,7 +32,7 @@ func Show() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"flex flex-col items-center mt-4 gap-5\"><h1 class=\"text-4xl text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"text-xl text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p><img src=\"/public/img/cerimonizo_concept.svg\" alt=\"Cerimonizo Concept Image\" class=\"mx-auto sm:w-4/5\"><section class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Se interessou? Informe seu melhor email para contato:</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"h-full flex flex-col items-center mt-4 mb-10 gap-5 justify-between\"><h1 class=\"text-4xl text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"text-xl text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p><img src=\"/public/img/cerimonizo_concept.svg\" alt=\"Cerimonizo Concept Image\" class=\"mx-auto sm:w-4/5\"><section class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Se interessou? Informe seu melhor email para contato:</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
