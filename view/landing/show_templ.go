@@ -32,11 +32,15 @@ func Show() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1 class=\"\">Se interessou? Informe seu melhor email para contato:</h1>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col items-center gap-8\"><h1 class=\"text-4xl text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"text-xl text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p><img src=\"/public/img/cerimonizo_concept.svg\" alt=\"Cerimonizo Concept Image\" class=\"w-4/5 mx-auto\"><h1 class=\"text-lg font-medium\">Se interessou? Informe seu melhor email para contato:</h1>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = components.Input(components.InputProps{Type: "email", Name: "email"}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

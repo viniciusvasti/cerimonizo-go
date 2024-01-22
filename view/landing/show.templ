@@ -5,7 +5,16 @@ import "viniciusvasti/cerimonize/view/components"
 
 templ Show() {
 	@layout.Base() {
-		<h1 class="">Se interessou? Informe seu melhor email para contato:</h1>
-		@components.Input(components.InputProps{Type: "email", Name: "email"})
+		<div class="flex flex-col items-center gap-8">
+			<h1 class="text-4xl text-purple-500 font-semibold">Transforme Sonhos em Realidade com a Cerimonizo!</h1>
+			<p class="text-xl text-purple-400 font-medium">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p>
+			<img
+				src="/public/img/cerimonizo_concept.svg"
+				alt="Cerimonizo Concept Image"
+				class="w-4/5 mx-auto"
+			/>
+			<h1 class="text-lg font-medium">Se interessou? Informe seu melhor email para contato:</h1>
+			@components.Input(components.InputProps{Type: "email", Name: "email"})
+		</div>
 	}
 }
