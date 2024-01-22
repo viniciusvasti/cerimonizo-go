@@ -1,10 +1,14 @@
 package components
 
 type InputProps struct {
-    Type string
-    Name string
+	Type string
+	Name string
 }
 
 templ Input(props InputProps) {
-    <input type={props.Type} name={props.Name} />
+	<input
+		type={ props.Type }
+		name={ props.Name }
+        class="border border-gray-300 rounded-md w-full px-3 py-2 mt-1 text-md"
+	/>
 }
