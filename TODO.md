@@ -1,0 +1,4 @@
+- [] Implement tailwind style generation during docker build
+- [] Implement templ templates generation during docker build
+- [] Implement tailwind style generation to run on compose air
+- [] Implement templ templates generation to run on compose air
