@@ -6,8 +6,11 @@ build:
 
 templ_gen:
 	templ generate
+
 style_gen:
-	npx tailwind -i 'tailwind.css' -o 'public/styles.css' --minify
+	npm run tailwind
+
+full_build: templ_gen build style_gen
 
 run:
 	air
