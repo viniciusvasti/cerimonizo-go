@@ -45,7 +45,7 @@ func phoneScreenshot(src string) templ.Component {
 	})
 }
 
-func Show() templ.Component {
+func Show(registered bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -58,6 +58,12 @@ func Show() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		if registered {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script>\n            alert(\"Email cadastrado com sucesso! Logo entraremos em contato!\");\n        </script>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-1.11.0.min.js\"></script><script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script><script type=\"text/javascript\" src=\"public/slick/slick.min.js\"></script><script>\n        $(document).ready(function(){\n            $(\".carousel\").slick({\n                dots: true,\n                infinite: true,\n                speed: 200,\n                fade: true,\n                cssEase: 'linear',\n                autoplay: true,\n            });\n        });\n    </script><style type=\"text/css\">\n        .slick-initialized .slick-slide {\n            display: flex !important;\n            justify-content: center;\n        }\n\n        .slick-prev:before,\n        .slick-next:before {\n            color: rgb(209, 213, 219) !important;\n        }\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -108,15 +114,25 @@ func Show() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section></div><section class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Qual seu melhor email para contato?</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.Input(components.InputProps{Type: "email", Name: "email"}).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			if !registered {
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form action=\"/cadastrar\" method=\"POST\" class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Qual seu melhor email para contato?</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = components.Input(components.InputProps{Type: "email", Name: "email"}).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button class=\"bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2\">Enviar!</button></section></form>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button class=\"bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2\">Enviar!</button></section></section></span>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

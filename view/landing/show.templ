@@ -11,7 +11,12 @@ templ phoneScreenshot(src string) {
 	/>
 }
 
-templ Show() {
+templ Show(registered bool) {
+    if registered {
+        <script>
+            alert("Email cadastrado com sucesso! Logo entraremos em contato!");
+        </script>
+    }
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="public/slick/slick.min.js"></script>
@@ -61,46 +66,19 @@ templ Show() {
 					</div>
 				</section>
 			</div>
-			<section class="flex flex-col items-center gap-1.5 mt-2">
-				<h1 class="text-lg font-medium">Qual seu melhor email para contato?</h1>
-				<section class="flex flex-row items-center gap-1.5 w-full sm:w-96">
-					@components.Input(components.InputProps{Type: "email", Name: "email"})
-					<button class="bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2">Enviar!</button>
-					// @components.Button(components.ButtonProps{Text: "Enviar"})
-				</section>
-			</section>
-			// <section class="w-full flex justify-center items-center">
-			// 	<ul class="flex flex-column justify-center items-center flex-wrap gap-4">
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/checklist.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Checklists</span>
-			// 		</li>
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/lightbulb.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Ideias</span>
-			// 		</li>
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/social-networks.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Inspirações</span>
-			// 		</li>
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/supplier.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Fornecedores</span>
-			// 		</li>
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/contract.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Contratos</span>
-			// 		</li>
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/buffet.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Buffet</span>
-			// 		</li>
-			// 		<li class="flex flex-col items-center gap-1.5">
-			// 			<img src="/public/img/crowd.png" alt="Checklist Image" class="w-8 h-8"/>
-			// 			<span class="text-xs text-purple-500 font-semibold">Convidados</span>
-			// 		</li>
-			// 	</ul>
-			// </section>
+			if !registered {
+				<form
+					action="/cadastrar"
+					method="POST"
+					class="flex flex-col items-center gap-1.5 mt-2"
+				>
+					<h1 class="text-lg font-medium">Qual seu melhor email para contato?</h1>
+					<section class="flex flex-row items-center gap-1.5 w-full sm:w-96">
+						@components.Input(components.InputProps{Type: "email", Name: "email"})
+						<button class="bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2">Enviar!</button>
+					</section>
+				</form>
+			}
 		</span>
 	}
 }
