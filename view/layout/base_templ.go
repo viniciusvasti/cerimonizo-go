@@ -25,7 +25,7 @@ func Base(canGoBack bool) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"public/styles.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/public/slick/slick.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/public/slick/slick-theme.css\"></head><body class=\"flex flex-col items-center bg-purple-50 min-h-[100dvh]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"msapplication-TileColor\" content=\"#da532c\"><meta name=\"msapplication-config\" content=\"/public/browserconfig.xml\"><meta name=\"theme-color\" content=\"#ffffff\"><link rel=\"stylesheet\" href=\"public/styles.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/public/slick/slick.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/public/slick/slick-theme.css\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/public/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/public/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/public/favicon-16x16.png\"><link rel=\"manifest\" href=\"/public/site.webmanifest\"><link rel=\"mask-icon\" href=\"/public/safari-pinned-tab.svg\" color=\"#5bbad5\"><link rel=\"shortcut icon\" href=\"/public/favicon.ico\"></head><body class=\"flex flex-col items-center bg-purple-50 min-h-[100dvh]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
