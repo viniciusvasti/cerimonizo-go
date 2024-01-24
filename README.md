@@ -6,3 +6,6 @@
 
 ## In Production
 - Runs at: [render](https://render.com)
+
+## Assets and Resources
+icons: https://www.flaticon.com/authors/special/lineal-color
