@@ -12,11 +12,11 @@ templ phoneScreenshot(src string) {
 }
 
 templ Show(registered bool) {
-    if registered {
-        <script>
+	if registered {
+		<script>
             alert("Email cadastrado com sucesso! Logo entraremos em contato!");
         </script>
-    }
+	}
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="public/slick/slick.min.js"></script>
@@ -79,6 +79,51 @@ templ Show(registered bool) {
 					</section>
 				</form>
 			}
+			<hr class="w-4/5 border-[0.5px] border-purple-500"/>
+			<h1 class="text-2xl font-semibold text-purple-500">O que você pode fazer com a Cerimonizo?</h1>
+			<div class="flex flex-col justify-center items-center gap-5">
+				<div class="flex flex-col items-center gap-2">
+					<h1 class="text-xl font-semibold text-purple-500">Checklist</h1>
+					<ul class="w-72 list-disc text-purple-400">
+						<li>Crie um checklist personalizado para cada casamento!</li>
+						<li><span class="font-semibold underline">Compartilhe</span> o checklist com os noivos!</li>
+						<li>Acompanhe o progresso do checklist!</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-2">
+					<h1 class="text-xl font-semibold text-purple-500">Agenda</h1>
+					<ul class="w-72 list-disc text-purple-400">
+						<li>Crie uma agenda personalizada para cada casamento!</li>
+						<li><span class="font-semibold underline">Compartilhe</span> a agenda com os noivos!</li>
+						<li>Receba <span class="font-semibold underline">lembretes</span> dos compromissos!</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-2">
+					<h1 class="text-xl font-semibold text-purple-500">Inspirações & Referências</h1>
+					<ul class="w-72 list-disc text-purple-400">
+						<li>Tenha um lugar para compartilhar inspirações e referências com os noivos!</li>
+						<li>Compartilhe <span class="font-semibold underline">imagens</span> e <span class="font-semibold underline">links</span>!</li>
+						<li>Comente o que gostou em cada referência!</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-2">
+					<h1 class="text-xl font-semibold text-purple-500">Fornecedores</h1>
+					<ul class="w-72 list-disc text-purple-400">
+						<li>Compartilhe uma lista de fornecedores com os noivos!</li>
+						<li>Gerencie <span class="font-semibold underline">contratos</span></li>
+						<li>Registre cada item escolhido pelos noivos, como <span class="font-semibold underline">Vestido da Noiva</span>, <span class="font-semibold underline">Terno do Novo</span>, <span class="font-semibold underline">Pratos do Buffet</span>, <span class="font-semibold underline">Itens de Decoração</span>, <span class="font-semibold underline">Músicas</span>, etc.</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-2">
+					<h1 class="text-xl font-semibold text-purple-500">Outros</h1>
+					<ul class="w-72 list-disc text-purple-400">
+						<li>Registre a <span class="font-semibold underline">Lista de Convidados</span> e gerencie as confirmações!</li>
+						<li>Registre as escolhas de Madrinhas, Padrinhos, Daminha e Paje!</li>
+						<li>Registre as escolhas de Músicas para cada momento da cerimônia!</li>
+						<li>Tenha um resumo do <span class="font-semibold underline">Custo Total</span> do casamento!</li>
+					</ul>
+				</div>
+			</div>
 		</span>
 	}
 }
