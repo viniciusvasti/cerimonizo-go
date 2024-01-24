@@ -68,7 +68,15 @@ func Show() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"h-full flex flex-col items-center mt-4 mb-10 gap-5 justify-between\"><h1 class=\"w-full text-2xl text-center text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"w-full max-w-[520px] text-xl text-center text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p><div class=\"w-56 sm:w-80 mb-4\"><section class=\"carousel\"><div class=\"flex justify-center items-center\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"h-full flex flex-col items-center mt-4 mb-10 gap-5 justify-between\"><h1 class=\"w-full text-2xl text-center text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"w-full max-w-[520px] text-xl text-center text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para <span class=\"font-bold text-purple-500\">Cerimonialistas</span> e <span class=\"font-bold text-purple-500\">Noivos</span>.</p><div class=\"w-56 sm:w-80 mb-4\"><section class=\"carousel\"><div class=\"flex justify-center items-center\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-casamentos.png").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex justify-center items-center\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -80,15 +88,7 @@ func Show() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-fornecedores.png").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex justify-center items-center\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-checklist-noivos.png").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-agenda-noivos.png").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

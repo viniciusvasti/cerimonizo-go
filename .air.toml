@@ -21,11 +21,11 @@ tmp_dir = "tmp"
   poll = false
   poll_interval = 0
   post_cmd = []
-  pre_cmd = ["templ generate && npx tailwind -i 'tailwind.css' -o 'public/styles.css' --minify"]
+  pre_cmd = ["templ generate && echo sleeping && sleep 3 && npx tailwind -i 'tailwind.css' -o 'public/styles.css' --minify && echo sleeping && sleep 3"]
   rerun = false
   rerun_delay = 1500
   send_interrupt = true
-  stop_on_error = false
+  stop_on_error = true
 
 [color]
   app = ""
