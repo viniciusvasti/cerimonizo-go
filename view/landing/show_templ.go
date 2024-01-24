@@ -100,6 +100,14 @@ func Show() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex justify-center items-center\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-inspiracoes.png").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section></div><section class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Qual seu melhor email para contato?</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
