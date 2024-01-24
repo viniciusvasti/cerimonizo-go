@@ -5,7 +5,7 @@ tmp_dir = "tmp"
 [build]
   args_bin = []
   bin = "./tmp/main"
-  cmd = "templ generate && npx tailwind -i 'tailwind.css' -o 'public/styles.css' --minify && go build -o ./tmp/main ./cmd/main.go"
+  cmd = "go build -o ./tmp/main ./cmd/main.go"
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata"]
   exclude_file = []
@@ -21,10 +21,10 @@ tmp_dir = "tmp"
   poll = false
   poll_interval = 0
   post_cmd = []
-  pre_cmd = []
+  pre_cmd = ["templ generate && npx tailwind -i 'tailwind.css' -o 'public/styles.css' --minify"]
   rerun = false
-  rerun_delay = 500
-  send_interrupt = false
+  rerun_delay = 1500
+  send_interrupt = true
   stop_on_error = false
 
 [color]
