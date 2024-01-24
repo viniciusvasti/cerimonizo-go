@@ -11,7 +11,7 @@ type LandingHandler struct {
 }
 
 func (lh LandingHandler) HandleLanding(c echo.Context) error {
-	log.Printf("registered: %s", c.QueryParam("registered"))
+	log.Printf("new access from %s", c.RealIP())
 	registered := c.QueryParam("registered") == "true"
 	return render(c, landing.Show(registered))
 }
