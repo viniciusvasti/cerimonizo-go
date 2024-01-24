@@ -3,24 +3,101 @@ package landing
 import "viniciusvasti/cerimonize/view/layout"
 import "viniciusvasti/cerimonize/view/components"
 
+templ phoneScreenshot(src string) {
+	<img
+		src={ src }
+		alt="Image 1"
+		class="w-52 sm:w-64 border-8 rounded-3xl border-black shadow-lg self-center"
+	/>
+}
+
 templ Show() {
-	@layout.Base() {
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="public/slick/slick.min.js"></script>
+	<script>
+        $(document).ready(function(){
+            $(".carousel").slick({
+                dots: true,
+                infinite: true,
+                speed: 200,
+                fade: true,
+                cssEase: 'linear',
+                autoplay: true,
+            });
+        });
+    </script>
+	<style type="text/css">
+        .slick-initialized .slick-slide {
+            display: flex !important;
+            justify-content: center;
+        }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: rgb(209, 213, 219) !important;
+        }
+    </style>
+	@layout.Base(false) {
 		<span class="h-full flex flex-col items-center mt-4 mb-10 gap-5 justify-between">
 			<h1 class="w-full text-2xl text-center text-purple-500 font-semibold">Transforme Sonhos em Realidade com a Cerimonizo!</h1>
-			<p class="w-full text-xl text-center text-purple-400 font-medium">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p>
-			<img
-				src="/public/img/cerimonizo_concept.svg"
-				alt="Cerimonizo Concept Image"
-				class="mx-auto sm:w-4/5"
-			/>
+			<p class="w-full max-w-[520px] text-xl text-center text-purple-400 font-medium">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p>
+			<div class="w-56 sm:w-80 mb-4">
+				<section class="carousel">
+					<div class="flex justify-center items-center">
+						@phoneScreenshot("/public/img/mock-up-checklist-noivos.png")
+					</div>
+					<div class="flex justify-center items-center">
+						@phoneScreenshot("/public/img/mock-up-fornecedores.png")
+					</div>
+					<div class="flex justify-center items-center">
+						@phoneScreenshot("/public/img/mock-up-checklist-noivos.png")
+					</div>
+					<div class="flex justify-center items-center">
+						@phoneScreenshot("/public/img/mock-up-fornecedores.png")
+					</div>
+				</section>
+			</div>
 			<section class="flex flex-col items-center gap-1.5 mt-2">
-				<h1 class="text-lg font-medium">Se interessou? Informe seu melhor email para contato:</h1>
+				<h1 class="text-lg font-medium">Qual seu melhor email para contato?</h1>
 				<section class="flex flex-row items-center gap-1.5 w-full sm:w-96">
 					@components.Input(components.InputProps{Type: "email", Name: "email"})
-					<button class="bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2">Enviar</button>
+					<button class="bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2">Enviar!</button>
 					// @components.Button(components.ButtonProps{Text: "Enviar"})
 				</section>
 			</section>
+			// <section class="w-full flex justify-center items-center">
+			// 	<ul class="flex flex-column justify-center items-center flex-wrap gap-4">
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/checklist.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Checklists</span>
+			// 		</li>
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/lightbulb.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Ideias</span>
+			// 		</li>
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/social-networks.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Inspirações</span>
+			// 		</li>
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/supplier.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Fornecedores</span>
+			// 		</li>
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/contract.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Contratos</span>
+			// 		</li>
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/buffet.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Buffet</span>
+			// 		</li>
+			// 		<li class="flex flex-col items-center gap-1.5">
+			// 			<img src="/public/img/crowd.png" alt="Checklist Image" class="w-8 h-8"/>
+			// 			<span class="text-xs text-purple-500 font-semibold">Convidados</span>
+			// 		</li>
+			// 	</ul>
+			// </section>
 		</span>
 	}
 }

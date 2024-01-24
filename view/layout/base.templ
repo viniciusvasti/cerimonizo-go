@@ -2,15 +2,17 @@ package layout
 
 import "viniciusvasti/cerimonize/view/components"
 
-templ Base() {
+templ Base(canGoBack bool) {
 	<html>
 		<head>
 			<meta charset="utf-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1"/>
 			<link rel="stylesheet" href="public/styles.css"/>
+			<link rel="stylesheet" type="text/css" href="/public/slick/slick.css"/>
+			<link rel="stylesheet" type="text/css" href="/public/slick/slick-theme.css"/>
 		</head>
 		<body class="flex flex-col items-center bg-purple-50 min-h-[100dvh]">
-			@components.Header()
+			@components.Header(canGoBack)
 			<main class="flex-1 flex w-full items-center flex-col mt-16 px-6 pb-2 sm:px14">
 				{ children... }
 			</main>

@@ -13,7 +13,7 @@ import "bytes"
 import "viniciusvasti/cerimonize/view/layout"
 import "viniciusvasti/cerimonize/view/components"
 
-func Show() templ.Component {
+func phoneScreenshot(src string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -26,13 +26,81 @@ func Show() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Var2 := templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(src))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Image 1\" class=\"w-52 sm:w-64 border-8 rounded-3xl border-black shadow-lg self-center\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func Show() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-1.11.0.min.js\"></script><script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script><script type=\"text/javascript\" src=\"public/slick/slick.min.js\"></script><script>\n        $(document).ready(function(){\n            $(\".carousel\").slick({\n                dots: true,\n                infinite: true,\n                speed: 200,\n                fade: true,\n                cssEase: 'linear',\n                autoplay: true,\n            });\n        });\n    </script><style type=\"text/css\">\n        .slick-initialized .slick-slide {\n            display: flex !important;\n            justify-content: center;\n        }\n\n        .slick-prev:before,\n        .slick-next:before {\n            color: rgb(209, 213, 219) !important;\n        }\n    </style>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Var3 := templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 			if !templ_7745c5c3_IsBuffer {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"h-full flex flex-col items-center mt-4 mb-10 gap-5 justify-between\"><h1 class=\"w-full text-2xl text-center text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"w-full text-xl text-center text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p><img src=\"/public/img/cerimonizo_concept.svg\" alt=\"Cerimonizo Concept Image\" class=\"mx-auto sm:w-4/5\"><section class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Se interessou? Informe seu melhor email para contato:</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"h-full flex flex-col items-center mt-4 mb-10 gap-5 justify-between\"><h1 class=\"w-full text-2xl text-center text-purple-500 font-semibold\">Transforme Sonhos em Realidade com a Cerimonizo!</h1><p class=\"w-full max-w-[520px] text-xl text-center text-purple-400 font-medium\">Facilitamos cada etapa do processo, proporcionando uma experiência única de planejamento para cerimonialistas e noivos.</p><div class=\"w-56 sm:w-80 mb-4\"><section class=\"carousel\"><div class=\"flex justify-center items-center\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-checklist-noivos.png").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex justify-center items-center\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-fornecedores.png").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex justify-center items-center\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-checklist-noivos.png").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex justify-center items-center\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = phoneScreenshot("/public/img/mock-up-fornecedores.png").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section></div><section class=\"flex flex-col items-center gap-1.5 mt-2\"><h1 class=\"text-lg font-medium\">Qual seu melhor email para contato?</h1><section class=\"flex flex-row items-center gap-1.5 w-full sm:w-96\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -40,7 +108,7 @@ func Show() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button class=\"bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2\">Enviar</button></section></section></span>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button class=\"bg-purple-500 w-20 text-white font-semibold rounded-md px-4 py-2\">Enviar!</button></section></section></span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -49,7 +117,7 @@ func Show() templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = layout.Base().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layout.Base(false).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

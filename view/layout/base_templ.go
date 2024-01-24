@@ -12,7 +12,7 @@ import "bytes"
 
 import "viniciusvasti/cerimonize/view/components"
 
-func Base() templ.Component {
+func Base(canGoBack bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -25,11 +25,11 @@ func Base() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"public/styles.css\"></head><body class=\"flex flex-col items-center bg-purple-50 min-h-[100dvh]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"public/styles.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/public/slick/slick.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/public/slick/slick-theme.css\"></head><body class=\"flex flex-col items-center bg-purple-50 min-h-[100dvh]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Header().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Header(canGoBack).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
