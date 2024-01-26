@@ -1,22 +1,29 @@
 package main
 
 import (
-	// "log"
-	// "os"
 	"log"
+	"net/smtp"
+	"os"
 	"viniciusvasti/cerimonize/handler"
 
-	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	// if os.Getenv("ENV") == "dev" {
-	// 	err := godotenv.Load()
-	// 	if err != nil {
-	// 		log.Panic("Error loading .env file")
-	// 	}
-	// }
+	if os.Getenv("ENV") == "dev" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Panic("Error loading .env file")
+		}
+	}
+	if os.Getenv("GMAIL_USERNAME") == "" {
+		log.Panic("GMAIL_USERNAME not set")
+	}
+	if os.Getenv("GMAIL_PASSWORD") == "" {
+		log.Panic("GMAIL_PASSWORD not set")
+	}
+
 	app := echo.New()
 
 	landingHandler := handler.LandingHandler{}
@@ -38,7 +45,25 @@ func main() {
 	app.POST("/cadastrar", func(c echo.Context) error {
 		newEmail := c.FormValue("email")
 		log.Printf("New email: %s", newEmail)
+		sendEmail(newEmail)
 		return c.Redirect(302, "/?registered=true")
 	})
 	app.Start(":3000")
 }
+
+func sendEmail(email string) error {
+	// Set up authentication information.
+	auth := smtp.PlainAuth("", os.Getenv("GMAIL_USERNAME"), os.Getenv("GMAIL_PASSWORD"), "smtp.gmail.com")
+
+	// Connect to the server, authenticate, set the sender and recipient,
+	// and send the email all in one step.
+	err := smtp.SendMail("smtp.gmail.com:587", auth, os.Getenv("GMAIL_USERNAME"), []string{os.Getenv("GMAIL_USERNAME")}, []byte("To: "+os.Getenv("GMAIL_USERNAME")+"\r\n"+
+		"Subject: New subscription to Cerimonizo\r\n"+
+		"\r\n"+
+		email))
+	if err != nil {
+		log.Printf("Error sending email, %s: %s", email, err)
+	}
+	return err
+}
+

@@ -13,4 +13,4 @@ style_gen:
 full_build: templ_gen build style_gen
 
 run:
-	air
+	export ENV=dev && air
