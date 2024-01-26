@@ -109,3 +109,49 @@ func Test_Wedding_IsValid(t *testing.T) {
 		}
 	})
 }
+
+func Test_Wedding_NewWedding(t *testing.T) {
+	t.Run("Should create a new wedding", func(t *testing.T) {
+		wedding, err := application.NewWedding("John and Mary's", time.Now().AddDate(0, 0, 1))
+
+		if err != nil {
+			t.Errorf("Expected wedding to be created, but got error: %s", err.Error())
+		}
+
+		if wedding == nil {
+			t.Error("Expected wedding to be created, but got nil")
+		}
+	})
+
+	t.Run("Should not create a new wedding without a name", func(t *testing.T) {
+		wedding, err := application.NewWedding("", time.Now().AddDate(0, 0, 1))
+
+		if err == nil {
+			t.Error("Expected an error when creating a wedding without a name")
+		}
+
+		if wedding != nil {
+			t.Error("Expected wedding to be nil")
+		}
+
+		if err.Error() != "The wedding name is required" {
+			t.Errorf("Expected error message to be 'The wedding name is required', but got '%s'", err.Error())
+		}
+	})
+
+	t.Run("Should not create a new wedding without a date", func(t *testing.T) {
+		wedding, err := application.NewWedding("John and Mary's", time.Time{})
+
+		if err == nil {
+			t.Error("Expected an error when creating a wedding without a date")
+		}
+
+		if wedding != nil {
+			t.Error("Expected wedding to be nil")
+		}
+
+		if err.Error() != "The wedding date is required" {
+			t.Errorf("Expected error message to be 'The wedding date is required', but got '%s'", err.Error())
+		}
+	})
+}

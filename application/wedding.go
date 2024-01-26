@@ -3,6 +3,8 @@ package application
 import (
 	"errors"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type WeddingInterface interface {
@@ -16,6 +18,26 @@ type WeddingInterface interface {
 	GetBudget() float64
 }
 
+type WeddingServiceInterface interface {
+	Get(id string) (WeddingInterface, error)
+	Create(name string, date time.Time) (WeddingInterface, error)
+	Enable(wedding WeddingInterface) error
+	Disable(wedding WeddingInterface) error
+}
+
+type WeddingReader interface {
+	Get(id string) (WeddingInterface, error)
+}
+
+type WeddingWriter interface {
+	Save(wedding WeddingInterface) (WeddingInterface, error)
+}
+
+type WeddingRepositoryInterface interface {
+	WeddingReader
+	WeddingWriter
+}
+
 const (
 	ENABLED  = "enabled"
 	DISABLED = "disabled"
@@ -27,6 +49,21 @@ type Wedding struct {
 	Date   time.Time
 	Budget float64
 	Status string
+}
+
+func NewWedding(name string, date time.Time) (*Wedding, error) {
+	wedding := Wedding{
+		ID:     uuid.NewString(),
+		Name:   name,
+		Date:   date,
+		Status: ENABLED,
+	}
+
+	if valid, err := wedding.IsValid(); !valid {
+		return nil, err
+	}
+
+	return &wedding, nil
 }
 
 func (w *Wedding) IsValid() (bool, error) {
