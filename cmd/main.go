@@ -36,6 +36,9 @@ func main() {
 	app.Static("/public", "public")
 	app.Static("/public/img", "public/img")
 	// app.Static("/mock-up/public", "public")
+	app.GET("/health", func(c echo.Context) error {
+		return c.String(200, "OK")
+	})
 	app.GET("/", landingHandler.HandleLanding)
 	// app.GET("/mock-up/checklist-noivos", brideAndGroomChecklistHandler.HandleChecklist)
 	// app.GET("/mock-up/fornecedores", suppliersHandler.Handle)
