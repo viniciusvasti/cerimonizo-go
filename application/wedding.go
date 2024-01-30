@@ -20,13 +20,16 @@ type WeddingInterface interface {
 
 type WeddingServiceInterface interface {
 	Get(id string) (WeddingInterface, error)
-	Create(name string, date time.Time) (WeddingInterface, error)
+	GetAll() ([]WeddingInterface, error)
+	Create(name string, date time.Time, budget float64) (WeddingInterface, error)
+	Update(wedding WeddingInterface) (WeddingInterface, error)
 	Enable(wedding WeddingInterface) error
 	Disable(wedding WeddingInterface) error
 }
 
 type WeddingReader interface {
 	Get(id string) (WeddingInterface, error)
+	GetAll() ([]WeddingInterface, error)
 }
 
 type WeddingWriter interface {
@@ -51,12 +54,13 @@ type Wedding struct {
 	Status string
 }
 
-func NewWedding(name string, date time.Time) (*Wedding, error) {
+func NewWedding(name string, date time.Time, budget float64) (*Wedding, error) {
 	wedding := Wedding{
 		ID:     uuid.NewString(),
 		Name:   name,
 		Date:   date,
 		Status: ENABLED,
+		Budget: budget,
 	}
 
 	if valid, err := wedding.IsValid(); !valid {

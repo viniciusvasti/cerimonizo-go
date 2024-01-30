@@ -112,7 +112,7 @@ func Test_Wedding_IsValid(t *testing.T) {
 
 func Test_Wedding_NewWedding(t *testing.T) {
 	t.Run("Should create a new wedding", func(t *testing.T) {
-		wedding, err := application.NewWedding("John and Mary's", time.Now().AddDate(0, 0, 1))
+		wedding, err := application.NewWedding("John and Mary's", time.Now().AddDate(0, 0, 1), 10000)
 
 		if err != nil {
 			t.Errorf("Expected wedding to be created, but got error: %s", err.Error())
@@ -124,7 +124,7 @@ func Test_Wedding_NewWedding(t *testing.T) {
 	})
 
 	t.Run("Should not create a new wedding without a name", func(t *testing.T) {
-		wedding, err := application.NewWedding("", time.Now().AddDate(0, 0, 1))
+		wedding, err := application.NewWedding("", time.Now().AddDate(0, 0, 1), 20000)
 
 		if err == nil {
 			t.Error("Expected an error when creating a wedding without a name")
@@ -140,7 +140,7 @@ func Test_Wedding_NewWedding(t *testing.T) {
 	})
 
 	t.Run("Should not create a new wedding without a date", func(t *testing.T) {
-		wedding, err := application.NewWedding("John and Mary's", time.Time{})
+		wedding, err := application.NewWedding("John and Mary's", time.Time{}, 40000)
 
 		if err == nil {
 			t.Error("Expected an error when creating a wedding without a date")

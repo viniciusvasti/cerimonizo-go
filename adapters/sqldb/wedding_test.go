@@ -1,11 +1,11 @@
-package db_test
+package sqldb_test
 
 import (
 	"database/sql"
 	"log"
 	"testing"
 	"time"
-	"viniciusvasti/cerimonize/adapters/db"
+	"viniciusvasti/cerimonize/adapters/sqldb"
 	"viniciusvasti/cerimonize/application"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -58,7 +58,7 @@ func TestGet(t *testing.T) {
 	setup()
 	defer database.Close()
 
-	weddingDb := db.NewWeddingDB(database)
+	weddingDb := sqldb.NewWeddingSQLRepository(database)
 	wedding, err := weddingDb.Get("1")
 
 	if err != nil {
@@ -78,7 +78,7 @@ func TestSave(t *testing.T) {
 	setup()
 	defer database.Close()
 
-	weddingDb := db.NewWeddingDB(database)
+	weddingDb := sqldb.NewWeddingSQLRepository(database)
 	wedding := &application.Wedding{
 		ID:     "2",
 		Name:   "Wedding 2",

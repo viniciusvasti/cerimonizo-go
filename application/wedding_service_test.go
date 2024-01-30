@@ -9,6 +9,7 @@ import (
 // A trick to assert the count of calls to a method
 type weddingRepositoryStub struct {
 	GetCalls  int
+	GetAllCalls int
 	SaveCalls int
 }
 
@@ -24,6 +25,26 @@ func (wrs *weddingRepositoryStub) Get(id string) (application.WeddingInterface, 
 	}, nil
 }
 
+func (wrs *weddingRepositoryStub) GetAll() ([]application.WeddingInterface, error) {
+	wrs.GetAllCalls++
+	return []application.WeddingInterface{
+		&application.Wedding{
+			ID:     "123",
+			Name:   "John and Mary's",
+			Date:   time.Now().AddDate(0, 0, 1),
+			Status: application.ENABLED,
+			Budget: 10000,
+		},
+		&application.Wedding{
+			ID:     "456",
+			Name:   "Peter and Jane's",
+			Date:   time.Now().AddDate(0, 0, 2),
+			Status: application.ENABLED,
+			Budget: 20000,
+		},
+	}, nil
+}
+
 func (wrs *weddingRepositoryStub) Save(wedding application.WeddingInterface) (application.WeddingInterface, error) {
 	wrs.SaveCalls++
 	return &application.Wedding{
@@ -35,7 +56,7 @@ func (wrs *weddingRepositoryStub) Save(wedding application.WeddingInterface) (ap
 	}, nil
 }
 
-func Test_WeddingService_Get(t *testing.T) {
+func Test_WeddingService(t *testing.T) {
 	t.Run("Should get a wedding", func(t *testing.T) {
 		weddingRepository := weddingRepositoryStub{}
 		weddingService := application.NewWeddingService(&weddingRepository)
@@ -53,11 +74,31 @@ func Test_WeddingService_Get(t *testing.T) {
 		}
 	})
 
+	t.Run("Should get all weddings", func(t *testing.T) {
+		weddingRepository := weddingRepositoryStub{}
+		weddingService := application.NewWeddingService(&weddingRepository)
+
+		weddings, err := weddingService.GetAll()
+
+		if err != nil {
+			t.Errorf("Expected weddings to be retrieved, but got error: %s", err.Error())
+		}
+		if weddings == nil {
+			t.Error("Expected weddings to be retrieved, but got nil")
+		}
+		if len(weddings) != 2 {
+			t.Errorf("Expected weddings to have 2 items, but got %d", len(weddings))
+		}
+		if weddingRepository.GetAllCalls != 1 {
+			t.Errorf("Expected wedding repository get all to be called 1 time, but got %d", weddingRepository.GetAllCalls)
+		}
+	})
+
 	t.Run("Should create a wedding", func(t *testing.T) {
 		weddingRepository := weddingRepositoryStub{}
 		weddingService := application.NewWeddingService(&weddingRepository)
 
-		wedding, err := weddingService.Create("John and Mary's", time.Now().AddDate(0, 0, 1))
+		wedding, err := weddingService.Create("John and Mary's", time.Now().AddDate(0, 0, 1), 10000)
 
 		if err != nil {
 			t.Errorf("Expected wedding to be created, but got error: %s", err.Error())

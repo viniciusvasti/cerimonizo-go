@@ -1,4 +1,4 @@
-package handler
+package page_handler
 
 import (
 	"log"
@@ -7,10 +7,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type LandingHandler struct {
+type LandingPageHandler struct {
 }
 
-func (lh LandingHandler) HandleLanding(c echo.Context) error {
+func (lh LandingPageHandler) Handle(c echo.Context) error {
 	log.Printf("new access from %s", c.RealIP())
 	registered := c.QueryParam("registered") == "true"
 	return render(c, landing.Show(registered))
