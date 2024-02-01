@@ -3,14 +3,14 @@ package rest_handler
 import (
 	"net/http"
 	"viniciusvasti/cerimonize/adapters/dto"
-	"viniciusvasti/cerimonize/application"
+	"viniciusvasti/cerimonize/application/ports"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 )
 
 type WeddingRestHandler struct {
-	Service application.WeddingServiceInterface
+	Service ports.WeddingServiceInterface
 }
 
 func (wh WeddingRestHandler) HandleGet(c echo.Context) error {

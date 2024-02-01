@@ -1,16 +1,17 @@
-package application_test
+package services_test
 
 import (
 	"testing"
 	"time"
 	"viniciusvasti/cerimonize/application"
+	"viniciusvasti/cerimonize/application/services"
 )
 
 // A trick to assert the count of calls to a method
 type weddingRepositoryStub struct {
-	GetCalls  int
+	GetCalls    int
 	GetAllCalls int
-	SaveCalls int
+	SaveCalls   int
 }
 
 // It's important to receive the weddingRepositoryStub as a pointer, so that the calls to the methods are counted
@@ -59,7 +60,7 @@ func (wrs *weddingRepositoryStub) Save(wedding application.WeddingInterface) (ap
 func Test_WeddingService(t *testing.T) {
 	t.Run("Should get a wedding", func(t *testing.T) {
 		weddingRepository := weddingRepositoryStub{}
-		weddingService := application.NewWeddingService(&weddingRepository)
+		weddingService := services.NewWeddingService(&weddingRepository)
 
 		wedding, err := weddingService.Get("123")
 
@@ -76,7 +77,7 @@ func Test_WeddingService(t *testing.T) {
 
 	t.Run("Should get all weddings", func(t *testing.T) {
 		weddingRepository := weddingRepositoryStub{}
-		weddingService := application.NewWeddingService(&weddingRepository)
+		weddingService := services.NewWeddingService(&weddingRepository)
 
 		weddings, err := weddingService.GetAll()
 
@@ -96,7 +97,7 @@ func Test_WeddingService(t *testing.T) {
 
 	t.Run("Should create a wedding", func(t *testing.T) {
 		weddingRepository := weddingRepositoryStub{}
-		weddingService := application.NewWeddingService(&weddingRepository)
+		weddingService := services.NewWeddingService(&weddingRepository)
 
 		wedding, err := weddingService.Create("John and Mary's", time.Now().AddDate(0, 0, 1), 10000)
 
@@ -113,7 +114,7 @@ func Test_WeddingService(t *testing.T) {
 
 	t.Run("Should enable a wedding", func(t *testing.T) {
 		weddingRepository := weddingRepositoryStub{}
-		weddingService := application.NewWeddingService(&weddingRepository)
+		weddingService := services.NewWeddingService(&weddingRepository)
 
 		wedding := &application.Wedding{
 			ID:     "123",

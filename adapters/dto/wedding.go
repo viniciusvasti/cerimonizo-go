@@ -6,11 +6,11 @@ import (
 )
 
 type WeddingDTO struct {
-	ID     string `json:"id"`
-	Name   string `json:"name"`
-	Date   string `json:"date"`
+	ID     string  `json:"id"`
+	Name   string  `json:"name"`
+	Date   string  `json:"date"`
 	Budget float64 `json:"budget"`
-	Status string `json:"status"`
+	Status string  `json:"status"`
 }
 
 func (w *WeddingDTO) Bind(wedding application.WeddingInterface) {

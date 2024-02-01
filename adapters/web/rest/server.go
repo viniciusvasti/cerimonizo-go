@@ -7,7 +7,7 @@ import (
 	"viniciusvasti/cerimonize/adapters/sqldb"
 	page_handler "viniciusvasti/cerimonize/adapters/web/pages/handler"
 	rest_handler "viniciusvasti/cerimonize/adapters/web/rest/handler"
-	"viniciusvasti/cerimonize/application"
+	"viniciusvasti/cerimonize/application/services"
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/mattn/go-sqlite3"
@@ -48,7 +48,7 @@ func makeWeddingRoutes(cerimonizoRoutes *echo.Group) {
 		log.Fatal(err.Error())
 	}
 	weddingRepository := sqldb.NewWeddingSQLRepository(database)
-	weddingService := application.NewWeddingService(weddingRepository)
+	weddingService := services.NewWeddingService(weddingRepository)
 	weddingRoutes := cerimonizoRoutes.Group("/weddings")
 	weddingHandler := rest_handler.WeddingRestHandler{
 		Service: weddingService,
