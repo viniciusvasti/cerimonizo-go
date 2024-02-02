@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"log"
+	"net/smtp"
 	"os"
 
 	"viniciusvasti/cerimonize/adapters/sqldb"
@@ -38,3 +39,17 @@ func main() {
 	server := rest.Server{}
 	server.Serve(weddingService)
 }
+
+func sendEmail(email string) error {
+	auth := smtp.PlainAuth("", os.Getenv("GMAIL_USERNAME"), os.Getenv("GMAIL_PASSWORD"), "smtp.gmail.com")
+
+	err := smtp.SendMail("smtp.gmail.com:587", auth, os.Getenv("GMAIL_USERNAME"), []string{os.Getenv("GMAIL_USERNAME")}, []byte("To: "+os.Getenv("GMAIL_USERNAME")+"\r\n"+
+		"Subject: New subscription to Cerimonizo\r\n"+
+		"\r\n"+
+		email))
+	if err != nil {
+		log.Printf("Error sending email, %s: %s", email, err)
+	}
+	return err
+}
+
