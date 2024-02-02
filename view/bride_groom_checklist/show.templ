@@ -1,0 +1,53 @@
+package bride_groom_checklist
+
+import "viniciusvasti/cerimonize/view/layout"
+
+templ Show() {
+	@layout.Base(true) {
+		<form class="h-full w-full flex flex-col justify-center items-center mt-4 mb-10 gap-5">
+			<h2 class="text-2xl text-left font-semibold text-purple-500">Checklist dos Noivos</h2>
+			<ul class="text-lg text-purple-400 flex flex-col gap-3 bg-gray-50 p-6 rounded-lg border-2 border-purple-500 shadow-lg">
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="choose_date" name="choose_date" checked/>
+					<label class="text-xl font-medium" for="choose_date">Escolher a Data</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="select_venue" name="select_venue"/>
+					<label class="text-xl font-medium" for="select_venue">Escolher Igreja</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="select_venue" name="select_venue" checked/>
+					<label class="text-xl font-medium" for="select_venue">Escolher local da Festa</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="decide_theme" name="decide_theme"/>
+					<label class="text-xl font-medium" for="decide_theme">Decidir o tema da cerimônia</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="compile_guest_list" name="compile_guest_list"/>
+					<label class="text-xl font-medium" for="compile_guest_list">Montar lista de convidados</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="plan_honeymoon" name="plan_honeymoon"/>
+					<label class="text-xl font-medium" for="plan_honeymoon">Planejar Lua de Mel</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="plan_honeymoon" name="rings" checked />
+					<label class="text-xl font-medium" for="rings">Comprar Alianças</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="plan_honeymoon" name="rings"/>
+					<label class="text-xl font-medium" for="rings">Escolher Daminha e Paje</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="plan_honeymoon" name="rings"/>
+					<label class="text-xl font-medium" for="rings">Escolher Madrinhas</label>
+				</li>
+				<li class="space-x-2">
+					<input class="transform scale-150" type="checkbox" id="plan_honeymoon" name="rings"/>
+					<label class="text-xl font-medium" for="rings">Escolher Padrinhos</label>
+				</li>
+			</ul>
+		</form>
+	}
+}
