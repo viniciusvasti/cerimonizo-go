@@ -1,12 +1,11 @@
 package rest
 
 import (
-	"database/sql"
 	"log"
 	"time"
-	"viniciusvasti/cerimonize/adapters/sqldb"
 	page_handler "viniciusvasti/cerimonize/adapters/web/pages/handler"
 	rest_handler "viniciusvasti/cerimonize/adapters/web/rest/handler"
+	"viniciusvasti/cerimonize/application/ports"
 	"viniciusvasti/cerimonize/application/services"
 
 	"github.com/labstack/echo/v4"
@@ -16,7 +15,7 @@ import (
 type Server struct {
 }
 
-func (s *Server) Serve() {
+func (s *Server) Serve(weddingService ports.WeddingServiceInterface) {
 	app := echo.New()
 	app.HideBanner = true
 	app.Server.ReadTimeout = time.Second * 10
@@ -29,12 +28,16 @@ func (s *Server) Serve() {
 		c.Response().Header().Set("Content-Type", "application/json")
 		newEmail := c.FormValue("email")
 		log.Printf("New email: %s", newEmail)
+		services.SendEmail(newEmail)
 		return c.Redirect(302, "/?registered=true")
 	})
 
 	// REST API
+	weddingHandler := rest_handler.WeddingRestHandler{
+		Service: weddingService,
+	}
 	cerimonizoRoutes := app.Group("/api")
-	makeWeddingRoutes(cerimonizoRoutes)
+	makeWeddingRoutes(cerimonizoRoutes, weddingHandler)
 
 	err := app.Start(":3000")
 	if err != nil {
@@ -42,17 +45,8 @@ func (s *Server) Serve() {
 	}
 }
 
-func makeWeddingRoutes(cerimonizoRoutes *echo.Group) {
-	database, err := sql.Open("sqlite3", "database.db")
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-	weddingRepository := sqldb.NewWeddingSQLRepository(database)
-	weddingService := services.NewWeddingService(weddingRepository)
+func makeWeddingRoutes(cerimonizoRoutes *echo.Group, weddingHandler rest_handler.WeddingRestHandler) {
 	weddingRoutes := cerimonizoRoutes.Group("/weddings")
-	weddingHandler := rest_handler.WeddingRestHandler{
-		Service: weddingService,
-	}
 	weddingRoutes.GET("", weddingHandler.HandleGetAll)
 	weddingRoutes.GET("/:id", weddingHandler.HandleGet)
 	weddingRoutes.POST("", weddingHandler.HandleCreate)
