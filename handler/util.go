@@ -1,4 +1,4 @@
-package page_handler
+package handler
 
 import (
 	"github.com/a-h/templ"

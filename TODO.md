@@ -2,7 +2,3 @@
 - [] Implement templ templates generation during docker build
 - [] Implement tailwind style generation to run on compose air
 - [] Implement templ templates generation to run on compose air
-- [] Implement db migrations
-- [] Implement context id using custom context
-- [] Create swagger documentation
-- [] Implement structured logging
