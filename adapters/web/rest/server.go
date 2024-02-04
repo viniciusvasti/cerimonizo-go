@@ -9,6 +9,7 @@ import (
 	"viniciusvasti/cerimonize/application/services"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -17,6 +18,9 @@ type Server struct {
 
 func (s *Server) Serve(weddingService ports.WeddingServiceInterface) {
 	app := echo.New()
+	app.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format: "${time_rfc3339} method=${method}, uri=${uri}, status=${status}\n",
+	}))
 	app.HideBanner = true
 	app.Server.ReadTimeout = time.Second * 10
 	app.Static("/public", "public")
